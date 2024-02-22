@@ -47,7 +47,7 @@ public class Logic implements HttpFunction {
 	public void SSCtlg_SSList(){
 		this.act_exec.put("SSCtlg_SSList", true);
 		this.doWork(1.0E-4);
-		String url = "https://northamerica-northeast1-modellearning.cloudfunctions.net/SSList";
+		String url = "https://northamerica-northeast1-modellearning.cloudfunctions.net/sslist";
 		var getRequest = java.net.http.HttpRequest.newBuilder().uri(URI.create(url)).GET().build();
 
 		try {
@@ -61,7 +61,7 @@ public class Logic implements HttpFunction {
 	public void SSCtlg_SSItem(){
 		this.act_exec.put("SSCtlg_SSItem", true);
 		this.doWork(1.0E-4);
-		String url = "https://northamerica-northeast1-modellearning.cloudfunctions.net/SSItem";
+		String url = "https://northamerica-northeast1-modellearning.cloudfunctions.net/ssitem";
 		var getRequest = java.net.http.HttpRequest.newBuilder().uri(URI.create(url)).GET().build();
 
 		try {

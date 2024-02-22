@@ -47,7 +47,7 @@ public class Logic implements HttpFunction {
 	public void SSList_Query(){
 		this.act_exec.put("SSList_Query", true);
 		this.doWork(1.0E-4);
-		String url = "https://northamerica-northeast1-modellearning.cloudfunctions.net/SSCatQuery";
+		String url = "https://northamerica-northeast1-modellearning.cloudfunctions.net/sscatquery";
 		var getRequest = java.net.http.HttpRequest.newBuilder().uri(URI.create(url)).GET().build();
 
 		try {

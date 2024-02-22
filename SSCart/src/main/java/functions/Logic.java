@@ -47,7 +47,7 @@ public class Logic implements HttpFunction {
 	public void SSCart_SSGet(){
 		this.act_exec.put("SSCart_SSGet", true);
 		this.doWork(1.0E-4);
-		String url = "https://northamerica-northeast1-modellearning.cloudfunctions.net/SSGet";
+		String url = "https://northamerica-northeast1-modellearning.cloudfunctions.net/ssget";
 		var getRequest = java.net.http.HttpRequest.newBuilder().uri(URI.create(url)).GET().build();
 
 		try {
@@ -61,7 +61,7 @@ public class Logic implements HttpFunction {
 	public void SSCart_SSAdd(){
 		this.act_exec.put("SSCart_SSAdd", true);
 		this.doWork(1.0E-4);
-		String url = "https://northamerica-northeast1-modellearning.cloudfunctions.net/SSAdd";
+		String url = "https://northamerica-northeast1-modellearning.cloudfunctions.net/ssadd";
 		var getRequest = java.net.http.HttpRequest.newBuilder().uri(URI.create(url)).GET().build();
 
 		try {
@@ -75,7 +75,7 @@ public class Logic implements HttpFunction {
 	public void SSCart_SSDel(){
 		this.act_exec.put("SSCart_SSDel", true);
 		this.doWork(1.0E-4);
-		String url = "https://northamerica-northeast1-modellearning.cloudfunctions.net/SSDel";
+		String url = "https://northamerica-northeast1-modellearning.cloudfunctions.net/ssdel";
 		var getRequest = java.net.http.HttpRequest.newBuilder().uri(URI.create(url)).GET().build();
 
 		try {

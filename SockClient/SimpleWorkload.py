@@ -29,7 +29,7 @@ class SimpleWorkload(HttpUser):
 		self.act_exec["SockClient_a1"]=True;
 		self.doWait(1.0E-4);
 
-		tgt_url = "SSAddress";
+		tgt_url = "ssaddress";
 		self.client.get(tgt_url)
 	def SockClient_a2(self):
 		self.act_exec["SockClient_a2"]=True;

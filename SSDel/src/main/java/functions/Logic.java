@@ -47,7 +47,7 @@ public class Logic implements HttpFunction {
 	public void SSDel_Query(){
 		this.act_exec.put("SSDel_Query", true);
 		this.doWork(1.0E-4);
-		String url = "https://northamerica-northeast1-modellearning.cloudfunctions.net/SSCartQuery";
+		String url = "https://northamerica-northeast1-modellearning.cloudfunctions.net/sscartquery";
 		var getRequest = java.net.http.HttpRequest.newBuilder().uri(URI.create(url)).GET().build();
 
 		try {
