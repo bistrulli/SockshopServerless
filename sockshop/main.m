@@ -8,40 +8,36 @@ TF=N*K;
 X0=zeros(1,62);
 MU=zeros(1,62);
 
-X0(2)=1;
+X0(2)=100;
 
-MU([2 4 8 11 12 15 16 21 22 28 29 33 34 38 39 43 44 48 49 53 54 58 59 ])=1./[1.0 0.0001 1.0 0.0001 1.0 0.0001 1.0 0.0001 1.0 0.0001 1.0 0.0001 1.0 0.0001 1.0 0.0001 1.0 0.0001 1.0 0.0001 1.0 0.0001 1.0 ]; 
+MU([2 4 8 11 12 15 16 21 22 28 29 33 34 38 39 43 44 48 49 53 54 58 59 ])=1.0./[1.054613180771685 0.0001 1.0927543099100077 0.0001 0.9514319342877264 0.0001 1.0220376827518338 0.0001 0.9921933620787473 0.0001 1.218180081635334 0.0001 1.0190138657802208 0.0001 1.1537804970268 0.0001 0.9950603417257318 0.0001 1.0881959816988638 0.0001 1.0975508133906884 0.0001 0.9893983305454546 ]; 
 NT=[1 1 1 1 1 1 1 1 1 1 1 1 ]*inf;
 NC=[1 1 1 1 1 1 1 1 1 1 1 1 ]*inf;
 
-[t,y,ssROde] = lqnODE(X0,MU,NT,NC);
+names=["SSAdd","SSAddress","SSCart","SSCartQuery","SSCatQuery",
+        "SSCtlg","SSDel","SSGet","SSHome","SSItem","SSList"];
 
-% Bm=[];
-% e=inf;
-% while(e>0.01)
-%     [X,ssRSim] = lqn(X0,MU,NT,NC,TF,1,1);
-%     X0=X(:,end);
-%     avgT=cumsum(ssRSim(1,:))./linspace(0,size(ssRSim(1,:),2),size(ssRSim(1,:),2));
-% 
-%     batches=reshape(ssRSim(1,1:end-1),N,K);
-%     Bm=[Bm;mean(batches,2)];
-% 
-%     SEM = std(Bm)/sqrt(length(Bm));               % Standard Error
-%     ts = tinv([0.025  0.975],length(Bm)-1);      % T-Score
-%     CI = mean(Bm) + ts*SEM;                      % Confidence Intervals
-%     e=(mean(Bm)-CI(1))/mean(Bm);
-%     disp(e);
-% end
-% 
-% Tb=mean(Bm);
-% RTsim=X0(1)/Tb;
+[t,y,ssROde] = lqnODE(X0,MU,NT,NC);
 
 Tode=ssROde(1);
 RTode=X0(2)/Tode;
 
-% [Tb,RTsim;
-%  Tode,RTode];
 
-writematrix([Tode,RTode],"MPP.csv");
- 
-%system("java -jar /usr/local/bin/DiffLQN.jar model.lqn");
+NTLqn=[inf,sum(y(end,4:8)),sum(y(end,10:13)),...
+          sum(y(end,14:19)),sum(y(end,20:26)),...
+          sum(y(end,27:31)),sum(y(end,32:36)),...
+          sum(y(end,37:41)),sum(y(end,42:46)),...
+          sum(y(end,47:51)),sum(y(end,52:56)),...
+          sum(y(end,57:62))];
+NTopt=[inf,ceil(NTLqn(2:end)./NCopt(2:end))];
+NCopt=[inf,sum(y(end,[4,8])),sum(y(end,[11,12])),...
+           sum(y(end,[15,16])),sum(y(end,[21,22])),...
+           sum(y(end,[28,29])),sum(y(end,[33,34])),...
+            sum(y(end,[38,39])),sum(y(end,[43,44])),...
+            sum(y(end,[48,49])),sum(y(end,[53,54])),...
+            sum(y(end,[58,59]))];
+
+for i=1:length(names)
+    disp([names(i),NTopt(i+1)])
+    system(sprintf("sh ../%s/update.sh %d 100 1",names(i),NTopt(i+1)))
+end

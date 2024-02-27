@@ -3,6 +3,8 @@ sys.path.append('/Users/emilio-imt/git/MPP4Lqn')
 
 from entity import *
 from Lqn2MPP import Lqn2MPP
+import numpy as np
+import estimeDemands
 		
 if __name__ == '__main__':
 	
@@ -426,7 +428,19 @@ if __name__ == '__main__':
 	
 	LQN={"tasks":[T_SockClient ,T_SSAddress,T_SSHome,T_SSCtlg,T_SSCart,T_SSList,T_SSItem,T_SSGet,T_SSAdd,T_SSDel,T_SSCatQuery,T_SSCartQuery], "name":"sockshop"}
 	lqn2mpp.getMPP(lqn=LQN)
-	#lqn2mpp.removeInfSynch()
+	
+	#if log exist recalibrate the LQN based on executions logs
+	con=lqn2mpp.getConGraph()
+	np.savez('con.txt', **con)
+	demands=estimeDemands.estimeDeaand(lqn=LQN,con=con)
+	
+	#calibrate model
+	for t in LQN["tasks"]:
+		for e in t.getEntries():
+			acts=[a for a in e.getActivities() if(type(a) is  Activity)]
+			acts[-1].stime=demands[e.name]
+	
+	lqn2mpp.removeInfSynch()
 	#lqn2mpp.removeInfAsynch()
 	#lqn2mpp.removeInfAcquire()
 	lqn2mpp.toMatlab(outDir="./")
