@@ -3,11 +3,12 @@ import time, logging
 import locust.stats
 import numpy as np
 import subprocess
-import multiprocessing
+from queue import Queue
+import threading
 
 locust.stats.CSV_STATS_INTERVAL_SEC = 1
 
-rtQue=multiprocessing.Queue()
+rtQue=Queue()
 
 
 @events.test_stop.add_listener
