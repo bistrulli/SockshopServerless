@@ -3,7 +3,7 @@ import time, logging
 import locust.stats
 import numpy as np
 import subprocess
-import multiprocessing.queues
+import multiprocessing.Queue
 
 locust.stats.CSV_STATS_INTERVAL_SEC = 1
 
