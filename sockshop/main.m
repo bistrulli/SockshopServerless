@@ -37,6 +37,7 @@ NCopt=[inf*ones(size(y,1),1),sum(y(:,[4,8]),2),sum(y(:,[11,12]),2),...
             sum(y(:,[58,59]),2)];
 
 %NTopt=[inf,ceil(NTLqn(2:end)./max(NCopt(:,2:end)))];
+%NTopt=[inf,ones(1,length(NT)-1)];
 NTopt=[inf,ones(1,size(names,2))*80];
 
 % [t2,y2,ssROde2] = lqnODE(X0,MU,[inf,ceil(NTLqn(2:end))],max(NCopt));

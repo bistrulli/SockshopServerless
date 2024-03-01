@@ -1,15 +1,22 @@
 from locust import HttpUser, task, between, events
-import queue, time, logging
+import time, logging
 import locust.stats
 import numpy as np
 import subprocess
+import multiprocess.queues
 
 locust.stats.CSV_STATS_INTERVAL_SEC = 1
+
+rtQue=Queue()
 
 
 @events.test_stop.add_listener
 def on_test_stop(**kw):
-	pass
+	rt=[]
+	while not queue.empty():
+		rt+=[queue.get()]
+	np.savetxt('clientrt.txt',rt)
+    	
 
 
 class SimpleWorkload(HttpUser):
@@ -50,13 +57,14 @@ class SimpleWorkload(HttpUser):
 	
 	@task
 	def visit_homepage(self):
+		strat_time=time.time()
 		# execetute the entry activity
 		self.SockClient_a1()
 		# execetute the decision node of already executed evt
 		if(self.act_exec["SockClient_a1"]!=None and self.act_exec["SockClient_a1"]):
 		  self.act_exec["SockClient_a1"]=False
 		  self.OrNode_SockClient_a1()
-		
+		rtQue.put(time.time()-strat_time)
 		
 
 if __name__ == "__main__":
