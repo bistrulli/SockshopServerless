@@ -13,8 +13,8 @@ rtQue=multiprocessing.Queue()
 @events.test_stop.add_listener
 def on_test_stop(**kw):
 	rt=[]
-	while not queue.empty():
-		rt+=[queue.get()]
+	while not rtQue.empty():
+		rt+=[rtQue.get()]
 	np.savetxt('clientrt.txt',rt)
     	
 
