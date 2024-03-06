@@ -42,7 +42,7 @@ public class Logic implements HttpFunction {
 	}
 	public void SSHome_work(){
 		this.act_exec.put("SSHome_work", true);
-		this.doWork(1.0);
+		this.doWork(0.0542);
 	}
 
 	/*

@@ -42,7 +42,7 @@ public class Logic implements HttpFunction {
 	}
 	public void SSAdd_work(){
 		this.act_exec.put("SSAdd_work", true);
-		this.doWork(1.0);
+		this.doWork(0.0532);
 	}
 	public void SSAdd_Query(){
 		this.act_exec.put("SSAdd_Query", true);

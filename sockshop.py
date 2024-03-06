@@ -3,8 +3,6 @@ sys.path.append('/Users/emilio-imt/git/MPP4Lqn')
 
 from entity import *
 from Lqn2MPP import Lqn2MPP
-import numpy as np
-import estimeDemands
 		
 if __name__ == '__main__':
 	
@@ -56,7 +54,7 @@ if __name__ == '__main__':
 	###### SockClient activities and calls
 	SockClientSockClient_a1=SynchCall(dest=SSAddress, parent=SockClient, name="SockClient_a1ToSSAddress")
 	SockClient.getActivities().append(SockClientSockClient_a1)
-	SockClientSockClient_a2=Activity(stime=1.0, parent=SockClient, name="SockClient_a2")
+	SockClientSockClient_a2=Activity(stime=0.0299, parent=SockClient, name="SockClient_a2")
 	SockClient.getActivities().append(SockClientSockClient_a2)
 
 	###### SockClient Activity Diagram
@@ -83,7 +81,7 @@ if __name__ == '__main__':
 	SSAddress.getActivities().append(SSAddressSSAddress_SSCtlg)
 	SSAddressSSAddress_SSCarts=SynchCall(dest=SSCart, parent=SSAddress, name="SSAddress_SSCartsToSSCart")
 	SSAddress.getActivities().append(SSAddressSSAddress_SSCarts)
-	SSAddressSSAddress_work=Activity(stime=1.0, parent=SSAddress, name="SSAddress_work")
+	SSAddressSSAddress_work=Activity(stime=0.105, parent=SSAddress, name="SSAddress_work")
 	SSAddress.getActivities().append(SSAddressSSAddress_work)
 
 	###### SSAddress Activity Diagram
@@ -122,7 +120,7 @@ if __name__ == '__main__':
 	###### SSHome activities and calls
 	SSHomeSSHome_a1=Activity(stime=1.0E-4, parent=SSHome, name="SSHome_a1")
 	SSHome.getActivities().append(SSHomeSSHome_a1)
-	SSHomeSSHome_work=Activity(stime=1.0, parent=SSHome, name="SSHome_work")
+	SSHomeSSHome_work=Activity(stime=0.0542, parent=SSHome, name="SSHome_work")
 	SSHome.getActivities().append(SSHomeSSHome_work)
 
 	###### SSHome Activity Diagram
@@ -146,7 +144,7 @@ if __name__ == '__main__':
 	###### SSCtlg activities and calls
 	SSCtlgSSCtlg_a1=Activity(stime=1.0E-4, parent=SSCtlg, name="SSCtlg_a1")
 	SSCtlg.getActivities().append(SSCtlgSSCtlg_a1)
-	SSCtlgSSCtlg_work=Activity(stime=1.0, parent=SSCtlg, name="SSCtlg_work")
+	SSCtlgSSCtlg_work=Activity(stime=0.0434, parent=SSCtlg, name="SSCtlg_work")
 	SSCtlg.getActivities().append(SSCtlgSSCtlg_work)
 	SSCtlgSSCtlg_SSList=SynchCall(dest=SSList, parent=SSCtlg, name="SSCtlg_SSListToSSList")
 	SSCtlg.getActivities().append(SSCtlgSSCtlg_SSList)
@@ -184,7 +182,7 @@ if __name__ == '__main__':
 	###### SSCart activities and calls
 	SSCartSSCart_a1=Activity(stime=1.0E-4, parent=SSCart, name="SSCart_a1")
 	SSCart.getActivities().append(SSCartSSCart_a1)
-	SSCartSSCart_work=Activity(stime=1.0, parent=SSCart, name="SSCart_work")
+	SSCartSSCart_work=Activity(stime=0.0204, parent=SSCart, name="SSCart_work")
 	SSCart.getActivities().append(SSCartSSCart_work)
 	SSCartSSCart_SSGet=SynchCall(dest=SSGet, parent=SSCart, name="SSCart_SSGetToSSGet")
 	SSCart.getActivities().append(SSCartSSCart_SSGet)
@@ -229,7 +227,7 @@ if __name__ == '__main__':
 	###### SSList activities and calls
 	SSListSSList_a1=Activity(stime=1.0E-4, parent=SSList, name="SSList_a1")
 	SSList.getActivities().append(SSListSSList_a1)
-	SSListSSList_work=Activity(stime=1.0, parent=SSList, name="SSList_work")
+	SSListSSList_work=Activity(stime=0.1279, parent=SSList, name="SSList_work")
 	SSList.getActivities().append(SSListSSList_work)
 	SSListSSList_Query=SynchCall(dest=SSCatQuery, parent=SSList, name="SSList_QueryToSSCatQuery")
 	SSList.getActivities().append(SSListSSList_Query)
@@ -260,7 +258,7 @@ if __name__ == '__main__':
 	###### SSItem activities and calls
 	SSItemSSItem_a1=Activity(stime=1.0E-4, parent=SSItem, name="SSItem_a1")
 	SSItem.getActivities().append(SSItemSSItem_a1)
-	SSItemSSItem_work=Activity(stime=1.0, parent=SSItem, name="SSItem_work")
+	SSItemSSItem_work=Activity(stime=0.0234, parent=SSItem, name="SSItem_work")
 	SSItem.getActivities().append(SSItemSSItem_work)
 	SSItemSSItem_Query=SynchCall(dest=SSCatQuery, parent=SSItem, name="SSItem_QueryToSSCatQuery")
 	SSItem.getActivities().append(SSItemSSItem_Query)
@@ -291,7 +289,7 @@ if __name__ == '__main__':
 	###### SSGet activities and calls
 	SSGetSSGet_a1=Activity(stime=1.0E-4, parent=SSGet, name="SSGet_a1")
 	SSGet.getActivities().append(SSGetSSGet_a1)
-	SSGetSSGet_work=Activity(stime=1.0, parent=SSGet, name="SSGet_work")
+	SSGetSSGet_work=Activity(stime=0.031, parent=SSGet, name="SSGet_work")
 	SSGet.getActivities().append(SSGetSSGet_work)
 	SSGetSSGet_Query=SynchCall(dest=SSCartQuery, parent=SSGet, name="SSGet_QueryToSSCartQuery")
 	SSGet.getActivities().append(SSGetSSGet_Query)
@@ -322,7 +320,7 @@ if __name__ == '__main__':
 	###### SSAdd activities and calls
 	SSAddSSAdd_a1=Activity(stime=1.0E-4, parent=SSAdd, name="SSAdd_a1")
 	SSAdd.getActivities().append(SSAddSSAdd_a1)
-	SSAddSSAdd_work=Activity(stime=1.0, parent=SSAdd, name="SSAdd_work")
+	SSAddSSAdd_work=Activity(stime=0.0532, parent=SSAdd, name="SSAdd_work")
 	SSAdd.getActivities().append(SSAddSSAdd_work)
 	SSAddSSAdd_Query=SynchCall(dest=SSCartQuery, parent=SSAdd, name="SSAdd_QueryToSSCartQuery")
 	SSAdd.getActivities().append(SSAddSSAdd_Query)
@@ -353,7 +351,7 @@ if __name__ == '__main__':
 	###### SSDel activities and calls
 	SSDelSSDel_a1=Activity(stime=1.0E-4, parent=SSDel, name="SSDel_a1")
 	SSDel.getActivities().append(SSDelSSDel_a1)
-	SSDelSSDel_work=Activity(stime=1.0, parent=SSDel, name="SSDel_work")
+	SSDelSSDel_work=Activity(stime=0.1048, parent=SSDel, name="SSDel_work")
 	SSDel.getActivities().append(SSDelSSDel_work)
 	SSDelSSDel_Query=SynchCall(dest=SSCartQuery, parent=SSDel, name="SSDel_QueryToSSCartQuery")
 	SSDel.getActivities().append(SSDelSSDel_Query)
@@ -384,7 +382,7 @@ if __name__ == '__main__':
 	###### SSCatQuery activities and calls
 	SSCatQuerySSCatQuery_a1=Activity(stime=1.0E-4, parent=SSCatQuery, name="SSCatQuery_a1")
 	SSCatQuery.getActivities().append(SSCatQuerySSCatQuery_a1)
-	SSCatQuerySSCatQuery_work=Activity(stime=1.0, parent=SSCatQuery, name="SSCatQuery_work")
+	SSCatQuerySSCatQuery_work=Activity(stime=0.0467, parent=SSCatQuery, name="SSCatQuery_work")
 	SSCatQuery.getActivities().append(SSCatQuerySSCatQuery_work)
 
 	###### SSCatQuery Activity Diagram
@@ -408,7 +406,7 @@ if __name__ == '__main__':
 	###### SSCartQuery activities and calls
 	SSCartQuerySSCartQuery_a1=Activity(stime=1.0E-4, parent=SSCartQuery, name="SSCartQuery_a1")
 	SSCartQuery.getActivities().append(SSCartQuerySSCartQuery_a1)
-	SSCartQuerySSCartQuery_work=Activity(stime=1.0, parent=SSCartQuery, name="SSCartQuery_work")
+	SSCartQuerySSCartQuery_work=Activity(stime=0.4, parent=SSCartQuery, name="SSCartQuery_work")
 	SSCartQuery.getActivities().append(SSCartQuerySSCartQuery_work)
 
 	###### SSCartQuery Activity Diagram
@@ -428,18 +426,6 @@ if __name__ == '__main__':
 	
 	LQN={"tasks":[T_SockClient ,T_SSAddress,T_SSHome,T_SSCtlg,T_SSCart,T_SSList,T_SSItem,T_SSGet,T_SSAdd,T_SSDel,T_SSCatQuery,T_SSCartQuery], "name":"sockshop"}
 	lqn2mpp.getMPP(lqn=LQN)
-	
-	#if log exist recalibrate the LQN based on executions logs
-	con=lqn2mpp.getConGraph()
-	np.savez('con.txt', **con)
-	demands=estimeDemands.estimeDeaand(lqn=LQN,con=con)
-	
-	#calibrate model
-	for t in LQN["tasks"]:
-		for e in t.getEntries():
-			acts=[a for a in e.getActivities() if(type(a) is  Activity)]
-			acts[-1].stime=demands[e.name]
-	
 	lqn2mpp.removeInfSynch()
 	#lqn2mpp.removeInfAsynch()
 	#lqn2mpp.removeInfAcquire()

@@ -84,7 +84,7 @@ public class Logic implements HttpFunction {
 	}
 	public void SSAddress_work(){
 		this.act_exec.put("SSAddress_work", true);
-		this.doWork(1.0);
+		this.doWork(0.105);
 	}
 
 	/*

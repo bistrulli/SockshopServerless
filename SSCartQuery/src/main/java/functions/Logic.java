@@ -42,7 +42,7 @@ public class Logic implements HttpFunction {
 	}
 	public void SSCartQuery_work(){
 		this.act_exec.put("SSCartQuery_work", true);
-		this.doWork(1.0);
+		this.doWork(0.4);
 	}
 
 	/*
